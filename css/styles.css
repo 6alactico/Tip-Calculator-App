@@ -19,17 +19,32 @@ body {
   flex-direction: column;
 }
 
-#calculator {
-  gap: 1.5rem;
+.btn, input {
+  height: 3rem;
+  width: 100%;
 }
 
-#input-section {
-  gap: 2rem;
-  padding: 0.5rem;
+.btn, input {
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: inherit;
 }
 
-#bill, #select-tip, #people {
-  gap: 0.5rem;
+input {
+  background-color: hsl(189, 47%, 97%);
+  border: none;
+  padding: 0 1rem;
+  text-align: right;
+  caret-color: hsl(172, 67%, 45%);
+}
+
+main {
+  background-color: hsl(0, 100%, 100%);
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
 }
 
 h1 {
@@ -40,35 +55,24 @@ h1 {
   text-align: center;
 }
 
-main {
-  background-color: hsl(0, 100%, 100%);
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-  padding: 1.5rem;
-}
-
 .label-heading {
   color: hsl(186, 14%, 43%);
   font-size: 0.875rem;
 }
 
+#calculator {
+  gap: 1rem;
+}
+
+#input-container {
+  gap: 1.5rem;
+  padding: 0.5rem;
+}
+
 .input-field {
-  background-color: hsl(189, 47%, 97%);
-  border-radius: 0.25rem;
-  color: hsl(183, 100%, 15%);
   display: inline-block;
   position: relative;
   width: 100%;
-}
-
-.input-field input, #custom {
-  background-color: transparent;
-  border: none;
-  height: 3rem;
-  padding: 0 1rem;
-  text-align: right;
-  width: 100%;
-  color: hsl(183, 100%, 15%);
 }
 
 .input-field svg {
@@ -85,12 +89,11 @@ input::placeholder {
 
 input:focus {
   outline: none;
+  border: 0.1rem solid hsl(172, 67%, 45%);
 }
 
-button, input {
-  border-radius: 0.25rem;
-  font-family: inherit;
-  font-size: inherit;
+input.invalid {
+  border: 0.1rem solid red;
 }
 
 #grid-selection {
@@ -100,63 +103,92 @@ button, input {
   padding: 0.25rem 0;
 }
 
-.tip-btn, #custom {
-  height: 3rem;
-  width: 100%;
-}
-
-.tip-btn, #reset-btn {
+.btn {
   border: none;
   background-color: hsl(183, 100%, 15%);
   color: hsl(0, 100%, 100%);
 }
 
-button:active {
+.btn:active {
   background-color: hsl(185, 41%, 84%);
   color: hsl(183, 100%, 15%);
 }
 
-#custom {
-  background-color: hsl(189, 47%, 97%);
-  color: hsl(186, 14%, 43%);
-  font-weight: 400;
+.reset {
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  font-size: 1.125rem;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-#output-section {
-  padding: 1.5rem;
+#output-container {
   background-color: hsl(183, 100%, 15%);
-  gap: 1rem;
   border-radius: 1rem;
+  font-size: 2rem;
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
 #output-text {
   color: hsl(172, 67%, 45%);
-  gap: 1.5rem;
-  padding: 1rem 0;
+  gap: 1rem;
+  padding: 0.75rem 0;
 }
 
 #output-text div {
-  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
 span {
-  font-size: 0.75rem;
   color: hsl(184, 14%, 56%);
+  font-size: 0.75rem;
 }
 
-#output-section label {
+#output-container label {
   color: hsl(0, 100%, 100%);
   font-size: 0.875rem;
 }
 
-#reset-btn {
-  width: 100%;
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
-  text-transform: uppercase;
-  font-size: 1.125rem;
-  padding: 0.5rem;
+@media screen and (min-width: 48rem) {
+  body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+  main {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    padding: 2rem 1.5rem;
+    width: 57rem;
+  }
+  #calculator {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+  h1 {
+    margin: 2rem;
+  }
+  #input-container {
+    padding: 0.75rem;
+    width: 50%;
+  }
+  #output-container {
+    width: 50%;
+    padding: 2rem;
+    justify-content: space-between;
+    font-size: 2rem;
+  }
+  #grid-selection {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .btn, input {
+    cursor: pointer;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
