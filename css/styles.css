@@ -80,7 +80,7 @@ input {
   transform: translate(-50%);
 }
 
-input:focus, input.focus { outline: 0.1rem solid hsl(172, 67%, 45%); }
+input:focus { outline: 0.1rem solid hsl(172, 67%, 45%); }
 input:out-of-range { outline: 0.1rem solid hsl(6.38, 72.73%, 56.86%); }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
@@ -163,6 +163,8 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
     padding: 2rem;
     width: 50%;
   }
+
+  input:hover { outline: 0.1rem solid hsl(172, 67%, 45%); }
 
   #grid-selection { grid-template-columns: repeat(3, 1fr); }
   .btn, input { cursor: pointer; }
