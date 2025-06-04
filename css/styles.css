@@ -4,6 +4,11 @@
   padding: 0;
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
 body {
   background-color: hsl(185, 41%, 84%);
   font-family: "Space Mono", monospace;
@@ -14,38 +19,17 @@ body {
   width: 23.438rem;
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.btn, input {
-  height: 3rem;
-  width: 100%;
-}
-
-.btn, input {
-  border-radius: 0.25rem;
-  font-family: inherit;
-  font-size: inherit;
-}
-
-input {
-  background-color: hsl(189, 47%, 97%);
-  border: none;
-  padding: 0 1rem;
-  text-align: right;
-  caret-color: hsl(172, 67%, 45%);
-}
-
 main {
   background-color: hsl(0, 100%, 100%);
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
-  padding: 1.5rem;
   display: flex;
   flex-direction: row;
+  padding: 1.5rem;
 }
+
+#calculator { gap: 1rem }
+#input-container { gap: 1.5rem; padding: 0.5rem }
 
 h1 {
   color: hsl(183, 100%, 15%);
@@ -55,18 +39,32 @@ h1 {
   text-align: center;
 }
 
-.label-heading {
-  color: hsl(186, 14%, 43%);
-  font-size: 0.875rem;
+.label-row {
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-#calculator {
-  gap: 1rem;
+.label-heading { color: hsl(186, 14%, 43%); font-size: 0.875rem; }
+.error-message { color: hsl(6.38, 72.73%, 56.86%); font-size: 0.875rem; }
+.section { gap: 0.5rem; }
+
+.btn, input {
+  border-radius: 0.25rem;
+  font-family: inherit;
+  font-size: inherit;
+  height: 3rem;
+  width: 100%;
 }
 
-#input-container {
-  gap: 1.5rem;
-  padding: 0.5rem;
+/*-- Input fields --*/
+input {
+  background-color: hsl(189, 47%, 97%);
+  border: none;
+  caret-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
+  padding: 0 1rem;
+  text-align: right;
 }
 
 .input-field {
@@ -83,19 +81,11 @@ h1 {
   transform: translate(-50%);
 }
 
-input::placeholder {
-  color: hsl(184, 14%, 56%);
-}
+input:focus, input.focus { outline: 0.1rem solid hsl(172, 67%, 45%); }
+input:out-of-range { outline: 0.1rem solid hsl(6.38, 72.73%, 56.86%); }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-input:focus {
-  outline: none;
-  border: 0.1rem solid hsl(172, 67%, 45%);
-}
-
-input.invalid {
-  border: 0.1rem solid red;
-}
-
+/*-- Buttons --*/
 #grid-selection {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -104,12 +94,12 @@ input.invalid {
 }
 
 .btn {
-  border: none;
   background-color: hsl(183, 100%, 15%);
+  border: none;
   color: hsl(0, 100%, 100%);
 }
 
-.btn:active {
+.btn.active, .reset:active {
   background-color: hsl(185, 41%, 84%);
   color: hsl(183, 100%, 15%);
 }
@@ -123,6 +113,7 @@ input.invalid {
   width: 100%;
 }
 
+/*-- Output --*/
 #output-container {
   background-color: hsl(183, 100%, 15%);
   border-radius: 1rem;
@@ -137,20 +128,10 @@ input.invalid {
   padding: 0.75rem 0;
 }
 
-#output-text div {
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-span {
-  color: hsl(184, 14%, 56%);
-  font-size: 0.75rem;
-}
-
-#output-container label {
-  color: hsl(0, 100%, 100%);
-  font-size: 0.875rem;
-}
+#output-text label { color: hsl(0, 100%, 100%); font-size: 0.875rem; }
+#output-text div { flex-direction: row; justify-content: space-between; }
+#output-text span { color: hsl(184, 14%, 56%); font-size: 0.75rem; }
+#output-text output::before { content: "$"; }
 
 @media screen and (min-width: 48rem) {
   body {
@@ -159,36 +140,33 @@ span {
     flex-direction: column;
     width: auto;
   }
+
   main {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 2rem 1.5rem;
     width: 57rem;
   }
+
   #calculator {
     display: flex;
     flex-direction: row;
     gap: 2rem;
   }
-  h1 {
-    margin: 2rem;
-  }
-  #input-container {
-    padding: 0.75rem;
-    width: 50%;
-  }
-  #output-container {
-    width: 50%;
-    padding: 2rem;
-    justify-content: space-between;
-    font-size: 2rem;
-  }
-  #grid-selection {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .btn, input {
-    cursor: pointer;
-  }
-}
 
+  h1 { margin: 2rem; }
+
+  #input-container { padding: 0.75rem; width: 50%; }
+
+  #output-container {
+    font-size: 2rem;
+    justify-content: space-between;
+    padding: 2rem;
+    width: 50%;
+  }
+
+  #grid-selection { grid-template-columns: repeat(3, 1fr); }
+  .btn, input { cursor: pointer; }
+  .btn:hover { background-color: hsl(185, 41%, 84%); color: hsl(183, 100%, 15%); }
+}
 /*# sourceMappingURL=styles.css.map */
