@@ -27,8 +27,8 @@ main {
   padding: 1.5rem;
 }
 
-#calculator { gap: 1rem }
-#input-container { gap: 1.5rem; padding: 0.5rem }
+#calculator { gap: 1.5rem }
+#input-container { gap: 2rem; padding: 0.5rem }
 
 h1 {
   color: hsl(183, 100%, 15%);
@@ -99,7 +99,7 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
 }
 
 .btn.active, .reset:active {
-  background-color: hsl(185, 41%, 84%);
+  background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
 }
 
