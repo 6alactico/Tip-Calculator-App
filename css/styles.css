@@ -23,7 +23,6 @@ main {
   background-color: hsl(0, 100%, 100%);
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
-  display: flex;
   flex-direction: row;
   padding: 1.5rem;
 }
