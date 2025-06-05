@@ -31,11 +31,8 @@ main {
 #input-container { gap: 2rem; padding: 0.5rem }
 
 h1 {
-  color: hsl(183, 100%, 15%);
-  font-size: 1.5rem;
-  letter-spacing: 0.75rem;
-  padding: 2rem;
-  text-align: center;
+  justify-self: center;
+  margin: 3rem;
 }
 
 .label-row {
@@ -44,7 +41,7 @@ h1 {
   justify-content: space-between;
 }
 
-.label-heading { color: hsl(186, 14%, 43%); font-size: 0.875rem; }
+.label-heading { color: hsl(186, 14%, 43%); font-size: 1rem; }
 .error-message { color: hsl(6.38, 72.73%, 56.86%); font-size: 0.875rem; }
 .section { gap: 0.5rem; }
 
@@ -80,9 +77,12 @@ input {
   transform: translate(-50%);
 }
 
-input:focus { outline: 0.1rem solid hsl(172, 67%, 45%); }
-input:out-of-range { outline: 0.1rem solid hsl(6.38, 72.73%, 56.86%); }
+input:focus { outline: 0.15rem solid hsl(172, 67%, 45%); }
+input:out-of-range { outline: 0.15rem solid hsl(6.38, 72.73%, 56.86%); }
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+input::placeholder { color: hsl(184, 14%, 56%);}
+
+#custom::placeholder { color: hsl(186, 14%, 43%);}
 
 /*-- Buttons --*/
 #grid-selection {
@@ -117,18 +117,23 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
   background-color: hsl(183, 100%, 15%);
   border-radius: 1rem;
   font-size: 2rem;
-  gap: 1rem;
-  padding: 1.5rem;
+  gap: 2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
 }
 
 #output-text {
   color: hsl(172, 67%, 45%);
-  gap: 1rem;
-  padding: 0.75rem 0;
+  gap: 1.25rem;
 }
 
-#output-text label { color: hsl(0, 100%, 100%); font-size: 0.875rem; }
-#output-text div { flex-direction: row; justify-content: space-between; }
+#output-text label { color: hsl(0, 100%, 100%); font-size: 0.938rem; }
+
+#output-text div { 
+  align-items: center;
+  flex-direction: row; 
+  justify-content: space-between; 
+}
+
 #output-text span { color: hsl(184, 14%, 56%); font-size: 0.75rem; }
 #output-text output::before { content: "$"; }
 
@@ -138,33 +143,37 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
     display: flex;
     flex-direction: column;
     width: auto;
+    justify-content: center;
   }
 
   main {
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
-    padding: 2rem 1.5rem;
-    width: 57rem;
+    padding: 2rem 1.8rem 2rem 3rem;
+    width: 57.5rem;
   }
 
   #calculator {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  h1 { margin: 2rem; }
+  h1 { margin: 1rem 2rem 3rem; }
 
-  #input-container { padding: 0.75rem; width: 50%; }
+  #input-container { padding: 0.75rem 0rem; width: 48%; gap: 2.5rem;}
+  #custom::placeholder { font-size: 1.125rem; text-align: center; }
 
   #output-container {
-    font-size: 2rem;
+    font-size: 2.5rem;
     justify-content: space-between;
-    padding: 2rem;
-    width: 50%;
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
+    width: 52%;
   }
 
-  input:hover { outline: 0.1rem solid hsl(172, 67%, 45%); }
+  #output-text { padding: 0; }
+
+  input:hover { outline: 0.15rem solid hsl(172, 67%, 45%); }
 
   #grid-selection { grid-template-columns: repeat(3, 1fr); }
   .btn, input { cursor: pointer; }
