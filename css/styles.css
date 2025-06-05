@@ -117,7 +117,8 @@ input::placeholder { color: hsl(184, 14%, 56%);}
   border-radius: 1rem;
   font-size: 2rem;
   gap: 2rem;
-  padding: 2rem 1.5rem 1.5rem;
+  padding: 2rem 1.5rem
+   1.5rem;
 }
 
 #output-text {
