@@ -99,14 +99,12 @@ input::placeholder { color: hsl(184, 14%, 56%);}
   color: hsl(0, 100%, 100%);
 }
 
-.btn.active, .reset:active {
+.reset, .btn.active, .reset:active {
   background-color: hsl(172, 67%, 45%);
   color: hsl(183, 100%, 15%);
 }
 
 .reset {
-  background-color: hsl(172, 67%, 45%);
-  color: hsl(183, 100%, 15%);
   font-size: 1.125rem;
   padding: 0.5rem;
   text-transform: uppercase;
