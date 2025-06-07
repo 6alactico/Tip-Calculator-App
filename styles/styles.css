@@ -73,6 +73,7 @@ h1 {
 }
 
 .btn, input {
+  border: none;
   border-radius: 0.25rem;
   font-family: inherit;
   font-size: inherit;
@@ -81,6 +82,7 @@ h1 {
 }
 
 input {
+  border: none;
   background-color: var(--grey50);
   caret-color: var(--green400);
   color: var(--green900);
@@ -103,11 +105,11 @@ input {
 }
 
 input:focus, input.focus {
-  outline: 0.15rem solid --green400;
+  outline: 0.15rem solid var(--green400);
 }
 
 input:out-of-range {
-  outline: 0.51rem solid --red;
+  outline: 0.15rem solid var(--red);
 }
 
 input::-webkit-outer-spin-button,
