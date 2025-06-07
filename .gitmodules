@@ -1,6 +1,0 @@
-[submodule "scss"]
-	path = scss
-	url = https://github.com/6alactico/SCSS.git
-[submodule "partials"]
-	path = partials
-	url = https://github.com/6alactico/SCSS.git
