@@ -1,6 +1,5 @@
 @use "spacing" as *;
 @use "typography" as *;
-@use "colors" as *;
 @use "layout" as *;
 
 :root {
@@ -21,10 +20,20 @@ $br-lg: 0.75rem;
 $br-xl: 1rem;
 
 // Content
+
+body {
+  @include body;
+  background-color: hsl(185, 41%, 84%);
+  font-family: "Space Mono", monospace;
+  font-size: $fs-xl;
+  font-weight: normal;
+  margin: auto;
+  width: 23.438rem;
+}
+
 main {
-  background-color: $white;
-  border-top-left-radius: $sp-5;
-  border-top-right-radius: $sp-5;
+  background-color: var(--white);
+  border-radius: $sp-4 $sp-4 $sp-0 $sp-0;
   flex-direction: row;
   padding: $sp-5;
 }
@@ -33,11 +42,8 @@ main {
 #input-container { gap: $sp-6; padding: $sp-2; }
 
 h1 {
-  color: $green900;
-  font-size: $fs-xl;
-  letter-spacing: $sp-3;
-  padding: $sp-6;
-  text-align: center;
+  justify-self: center;
+  margin: 3rem;
 }
 
 .label-row {
@@ -46,8 +52,8 @@ h1 {
   justify-content: space-between;
 }
 
-.label-heading { color: $grey500; font-size: $fs-sm; }
-.error-message { color: $red; font-size: $fs-sm; }
+.label-heading { color: var(--grey500); font-size: $fs-base; }
+.error-message { color: var(--red); font-size: $fs-sm; }
 .section { gap: $sp-2; }
 
 // Extend
@@ -60,10 +66,9 @@ h1 {
 }
 
 %input-elements {
-  background-color: $grey50;
-  border: none;
-  caret-color: $green400;
-  color: $green900;
+  background-color: var(--grey50);
+  caret-color: var(--green400);
+  color: var(--green900);
   padding: $sp-0 $sp-4;
   text-align: right;
 }
@@ -84,8 +89,8 @@ h1 {
 }
 
 input { @extend %component-elements; @extend %input-elements; }
-input:focus, input.focus { outline: 0.1rem solid $green400; }
-input:out-of-range { outline: 0.1rem solid $red; }
+input:focus, input.focus { outline: 0.15rem solid --green400; }
+input:out-of-range { outline: 0.51rem solid --red; }
 
 // Remove stepper
 input::-webkit-outer-spin-button,
@@ -103,17 +108,14 @@ input::-webkit-inner-spin-button {
 }
 
 .btn {
-  background-color: $green900;
-  border: none;
-  color: $white;
+  background-color: var(--green900);
+  color: var(--white);
   @extend %component-elements;
 }
 
-.btn.active, .reset:active { background-color: $green400; color: $green900; }
+.reset, .btn.active, .reset:active { background-color: var(--green400); color: var(--green900); }
 
 .reset {
-  background-color: $green400;
-  color: $green900;
   font-size: $fs-md;
   padding: $sp-2;
   text-transform: uppercase;
@@ -122,22 +124,25 @@ input::-webkit-inner-spin-button {
 
 // Output container
 #output-container {
-  background-color: $green900;
+  background-color: var(--green900);
   border-radius: $br-xl;
   font-size: $fs-xxl;
-  gap: $sp-4;
-  padding: $sp-5;
+  gap: $sp-6;
+  padding: $sp-6 $sp-5 $sp-5;
 }
 
 #output-text {
-  color: $green400;
+  color: var(--green400);
   gap: $sp-4;
-  padding: $sp-3 $sp-0;
 }
 
-#output-text div { flex-direction: row; justify-content: space-between; }
-#output-text span { color: $grey400; font-size: $fs-xs; }
-#output-container label { color: $white; font-size: $fs-sm; }
+#output-container label { color: var(--white); font-size: 0.938rem; }
+#output-text div { 
+  align-items: center;
+  flex-direction: row; 
+  justify-content: space-between; 
+}
+#output-text span { color: var(--grey400); font-size: $fs-xs; }
 #output-text output::before { content: "$"; }
 
 @media screen and (min-width: 48rem) {
@@ -145,36 +150,44 @@ input::-webkit-inner-spin-button {
     align-items: center;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: auto;
   }
 
   main {
-    border-bottom-left-radius: $sp-4;
-    border-bottom-right-radius: $sp-4;
-    padding: $sp-6 $sp-5;
-    width: 57rem;
+    border-radius: $br-xl;
+    padding: $sp-6 1.8rem $sp-6 3rem;
+    width: 57.5rem;
   }
 
   #calculator {
     display: flex;
     flex-direction: row;
-    gap: $sp-6;
+    gap: 3rem;
   }
 
-  h1 { margin: $sp-6; }
+  h1 { margin: $sp-4 $sp-6 3rem; }
 
-  #input-container { padding: $sp-3; width: 50%; }
+  #input-container { 
+    gap: 2.5rem; 
+    padding: $sp-3 $sp-0; 
+    width: 48%;
+  }
+
+  #custom::placeholder { font-size: $fs-md; text-align: center; }
 
   #output-container {
-    font-size: $fs-xxl;
+    font-size: 2.5rem;
     justify-content: space-between;
-    padding: $sp-6;
-    width: 50%;
+    padding: 3rem 2.5rem 2.5rem;
+    width: 52%;
   }
 
-   input:hover { outline: 0.1rem solid $green400; }
+  #output-text { padding: $sp-0; }
+  
+  input:hover { outline: 0.15rem solid var(--green400); }
 
   #grid-selection { grid-template-columns: repeat(3, 1fr); }
   .btn, input { cursor: pointer; }
-  .btn:hover { background-color: $grey200; color: $green900; }
+  .btn:hover { background-color: var(--grey200); color: var(--green900); }
 }
