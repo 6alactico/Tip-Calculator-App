@@ -1,0 +1,169 @@
+@use "spacing" as *;
+@use "typography" as *;
+@use "colors" as *;
+@use "layout" as *;
+
+// Border radius values
+$br-sm: 0.25rem;
+$br-md: 0.5rem;
+$br-lg: 0.75rem;
+$br-xl: 1rem;
+
+// Content
+main {
+  background-color: $white;
+  border-top-left-radius: $sp-5;
+  border-top-right-radius: $sp-5;
+  flex-direction: row;
+  padding: $sp-5;
+}
+
+#calculator { gap: $sp-5; }
+#input-container { gap: $sp-6; padding: $sp-2; }
+
+h1 {
+  color: $green900;
+  font-size: $fs-xl;
+  letter-spacing: $sp-3;
+  padding: $sp-6;
+  text-align: center;
+}
+
+.label-row {
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.label-heading { color: $grey500; font-size: $fs-sm; }
+.error-message { color: $red; font-size: $fs-sm; }
+.section { gap: $sp-2; }
+
+// Extend
+%component-elements {
+  border-radius: $br-sm;
+  font-family: inherit;
+  font-size: inherit; 
+  height: 3rem;
+  width: 100%;
+}
+
+%input-elements {
+  background-color: $grey50;
+  border: none;
+  caret-color: $green400;
+  color: $green900;
+  padding: $sp-0 $sp-4;
+  text-align: right;
+}
+
+// Input fields
+.input-field {
+  display: inline-block;
+  position: relative;
+  width: 100%
+}
+
+.input-field svg {
+  left: $sp-5;
+  pointer-events: none;
+  position: absolute;
+  top: 30%;
+  transform: translate(-50%);
+}
+
+input { @extend %component-elements; @extend %input-elements; }
+input:focus, input.focus { outline: 0.1rem solid $green400; }
+input:out-of-range { outline: 0.1rem solid $red; }
+
+// Remove stepper
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// Buttons
+#grid-selection {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $sp-4;
+  padding: $sp-1 $sp-0;
+}
+
+.btn {
+  background-color: $green900;
+  border: none;
+  color: $white;
+  @extend %component-elements;
+}
+
+.btn.active, .reset:active { background-color: $green400; color: $green900; }
+
+.reset {
+  background-color: $green400;
+  color: $green900;
+  font-size: $fs-md;
+  padding: $sp-2;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+// Output container
+#output-container {
+  background-color: $green900;
+  border-radius: $br-xl;
+  font-size: $fs-xxl;
+  gap: $sp-4;
+  padding: $sp-5;
+}
+
+#output-text {
+  color: $green400;
+  gap: $sp-4;
+  padding: $sp-3 $sp-0;
+}
+
+#output-text div { flex-direction: row; justify-content: space-between; }
+#output-text span { color: $grey400; font-size: $fs-xs; }
+#output-container label { color: $white; font-size: $fs-sm; }
+#output-text output::before { content: "$"; }
+
+@media screen and (min-width: 48rem) {
+  body {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+
+  main {
+    border-bottom-left-radius: $sp-4;
+    border-bottom-right-radius: $sp-4;
+    padding: $sp-6 $sp-5;
+    width: 57rem;
+  }
+
+  #calculator {
+    display: flex;
+    flex-direction: row;
+    gap: $sp-6;
+  }
+
+  h1 { margin: $sp-6; }
+
+  #input-container { padding: $sp-3; width: 50%; }
+
+  #output-container {
+    font-size: $fs-xxl;
+    justify-content: space-between;
+    padding: $sp-6;
+    width: 50%;
+  }
+
+   input:hover { outline: 0.1rem solid $green400; }
+
+  #grid-selection { grid-template-columns: repeat(3, 1fr); }
+  .btn, input { cursor: pointer; }
+  .btn:hover { background-color: $grey200; color: $green900; }
+}
